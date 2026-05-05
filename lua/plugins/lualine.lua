@@ -36,7 +36,13 @@ return {
 			symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
 			cond = hide_in_width,
 		}
-
+		local function plugin_updates()
+			local lazy_status = require("lazy.status")
+			if lazy_status.has_updates() then
+				return " " .. lazy_status.updates()
+			end
+			return ""
+		end
 		require("lualine").setup({
 			options = {
 				icons_enabled = true,
@@ -53,6 +59,7 @@ return {
 				lualine_x = {
 					diagnostics,
 					diff,
+					plugin_updates,
 					{ "filetype", cond = hide_in_width },
 				},
 				lualine_y = { "location" },

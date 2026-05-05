@@ -1,22 +1,22 @@
-return { -- Autocompletion
+return {
 	"saghen/blink.cmp",
 	event = "VimEnter",
-	dependencies = {
 
-		-- Snippet Engine
+	build = function()
+		print("Building blink.cmp...")
+		require("blink.cmp").build():wait(60000)
+		print("Done building blink.cmp")
+	end,
+
+	dependencies = {
+		-- REQUIRED for blink v2
+		{ "saghen/blink.lib" },
+
+		-- Snippets
 		{
-			"saghen/blink.lib",
 			"L3MON4D3/LuaSnip",
 			version = "2.*",
-			build = function()
-				-- build the fuzzy matcher, wait up to 60 seconds
-				-- you can use `gb` in `:Lazy` to rebuild the plugin as needed
-				require("blink.cmp").build():wait(60000)
-			end,
 			dependencies = {
-				-- `friendly-snippets` contains a variety of premade snippets.
-				--    See the README about individual language/framework/plugin snippets:
-				--    https://github.com/rafamadriz/friendly-snippets
 				{
 					"rafamadriz/friendly-snippets",
 					config = function()
@@ -24,7 +24,6 @@ return { -- Autocompletion
 					end,
 				},
 			},
-			opts = {},
 		},
 	},
 
@@ -32,6 +31,7 @@ return { -- Autocompletion
 	---@type blink.cmp.Config
 	opts = {
 		keymap = {
+			-- TODO MAKE TAB NEXT AND ENTER ACCEPT, SHIFT TAB BACK
 			-- 'default' (recommended) for mappings similar to built-in completions
 			--   <c-y> to accept ([y]es) the completion.
 			--    This will auto-import if your LSP supports it.
@@ -53,7 +53,12 @@ return { -- Autocompletion
 			-- <c-k>: Toggle signature help
 			--
 			-- See :h blink-cmp-config-keymap for defining your own keymap
-			preset = "super-tab",
+			preset = "none",
+			["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
+			["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
+			["<CR>"] = { "accept", "fallback" },
+			["<C-j>"] = { "select_next" },
+			["<C-k>"] = { "select_prev" },
 
 			-- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
 			--    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
