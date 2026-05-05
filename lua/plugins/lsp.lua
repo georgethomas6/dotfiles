@@ -112,6 +112,7 @@ return {
 			clangd = {},
 			pyright = {},
 			ts_ls = {},
+			texlab = {},
 
 			-- Formatters
 			stylua = {}, -- Used to format Lua code
