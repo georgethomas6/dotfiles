@@ -14,6 +14,7 @@ vim.api.nvim_create_autocmd("FileType", {
 			html = true,
 			javascript = true,
 			latex = true,
+			make = true,
 		}
 
 		if enabled[ft] then

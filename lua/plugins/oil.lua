@@ -2,7 +2,11 @@ return {
 	"stevearc/oil.nvim",
 	---@module 'oil'
 	---@type oil.SetupOpts
-	opts = {},
+	opts = {
+		preview = {
+			border = "rounded",
+		},
+	},
 	-- Optional dependencies
 	-- dependencies = { { "nvim-mini/mini.icons", opts = {} } },
 	dependencies = { "nvim-tree/nvim-web-devicons", opts = {} }, -- use if you prefer nvim-web-devicons

@@ -113,6 +113,7 @@ return {
 			pyright = {},
 			ts_ls = {},
 			texlab = {},
+			checkmake = {},
 
 			-- Formatters
 			stylua = {}, -- Used to format Lua code
