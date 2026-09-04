@@ -67,5 +67,12 @@ return {
 			end,
 			desc = "[F]ind [C]olorschemes -- search all installed colorschemes",
 		},
+		{
+			"<leader>fp",
+			function()
+				require("fzf-lua").files({ cwd = "~/CompSci/" })
+			end,
+			desc = "[F]ind in [P]rojects -- search CompSci directory",
+		},
 	},
 }

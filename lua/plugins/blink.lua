@@ -3,11 +3,8 @@ return {
 	event = "VimEnter",
 
 	build = function()
-		print("Building blink.cmp...")
-		require("blink.cmp").build():wait(60000)
-		print("Done building blink.cmp")
+		require("blink.cmp").build():pwait()
 	end,
-
 	dependencies = {
 		-- REQUIRED for blink v2
 		{ "saghen/blink.lib" },
