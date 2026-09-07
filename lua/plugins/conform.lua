@@ -1,18 +1,36 @@
 return {
 	"stevearc/conform.nvim",
+
 	opts = {
 		formatters_by_ft = {
+			-- Lua
 			lua = { "stylua" },
+
+			-- C
+			-- clangd handles formatting when no dedicated formatter is configured.
 			c = { lsp_format = "fallback" },
-			-- Conform will run multiple formatters sequentially
+
+			-- Python
 			python = { "isort", "black" },
-			-- You can customize some of the format options for the filetype (:help conform.format)
-			-- Conform will run the first available formatter
-			javascript = { "prettierd", "prettier", stop_after_first = true },
-			html = { "prettier", stop_after_first = true },
+
+			-- JavaScript
+			javascript = {
+				"prettierd",
+				"prettier",
+				stop_after_first = true,
+			},
+
+			-- HTML
+			html = {
+				"prettier",
+				stop_after_first = true,
+			},
+
+			-- LaTeX
+			tex = { "latexindent" },
 		},
+
 		format_on_save = {
-			-- These options will be passed to conform.format()
 			timeout_ms = 500,
 			lsp_format = "fallback",
 		},
