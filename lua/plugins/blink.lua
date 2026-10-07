@@ -13,6 +13,7 @@ return {
 		{
 			"L3MON4D3/LuaSnip",
 			version = "2.*",
+
 			dependencies = {
 				{
 					"rafamadriz/friendly-snippets",
@@ -21,6 +22,10 @@ return {
 					end,
 				},
 			},
+
+			config = function()
+				require("luasnip").add_snippets("tex", require("snippets.tex"), { type = "snippets" })
+			end,
 		},
 	},
 
