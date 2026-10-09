@@ -8,6 +8,7 @@ return {
 	dependencies = {
 		{
 			"saghen/blink.lib",
+			version = "*",
 		},
 
 		{
@@ -73,7 +74,7 @@ return {
 		},
 
 		fuzzy = {
-			implementation = "prefer_rust_with_warning",
+			implementation = "lua",
 		},
 
 		signature = {
